@@ -242,10 +242,11 @@ type SendMessageRequest struct {
 	Recipient string `json:"recipient"`
 	Message   string `json:"message"`
 	MediaPath string `json:"media_path,omitempty"`
+	QuotedID  string `json:"quoted_id,omitempty"`
 }
 
 // Function to send a WhatsApp message
-func sendWhatsAppMessage(client *whatsmeow.Client, recipient string, message string, mediaPath string) (bool, string) {
+func sendWhatsAppMessage(client *whatsmeow.Client, recipient string, message string, mediaPath string, quotedID string) (bool, string) {
 	if !client.IsConnected() {
 		return false, "Not connected to WhatsApp"
 	}
@@ -398,6 +399,14 @@ func sendWhatsAppMessage(client *whatsmeow.Client, recipient string, message str
 				FileSHA256:    resp.FileSHA256,
 				FileLength:    &resp.FileLength,
 			}
+		}
+	} else if quotedID != "" {
+		msg.ExtendedTextMessage = &waProto.ExtendedTextMessage{
+			Text: proto.String(message),
+			ContextInfo: &waProto.ContextInfo{
+				StanzaID:    proto.String(quotedID),
+				Participant: proto.String(recipientJID.String()),
+			},
 		}
 	} else {
 		msg.Conversation = proto.String(message)
@@ -748,7 +757,7 @@ func startRESTServer(client *whatsmeow.Client, messageStore *MessageStore, port 
 		fmt.Println("Received request to send message", req.Message, req.MediaPath)
 
 		// Send the message
-		success, message := sendWhatsAppMessage(client, req.Recipient, req.Message, req.MediaPath)
+		success, message := sendWhatsAppMessage(client, req.Recipient, req.Message, req.MediaPath, req.QuotedID)
 		fmt.Println("Message sent", success, message)
 		// Set response headers
 		w.Header().Set("Content-Type", "application/json")
