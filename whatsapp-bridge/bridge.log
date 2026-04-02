@@ -1,0 +1,38 @@
+11:32:10.669[36m [Client INFO] Starting WhatsApp client...[0m
+11:32:11.293[36m [Client INFO] Successfully authenticated[0m
+11:32:11.857[36m [Client INFO] Connected to WhatsApp[0m
+
+✓ Connected to WhatsApp! Type 'help' for commands.
+Starting REST API server on :8080...
+REST server is running. Press Ctrl+C to disconnect and exit.
+Received request to send message gastei 77 reais no jantar 
+Message sent true Message sent to 47047742857253@lid
+11:32:33.480[36m [Client INFO] Using existing chat name for 47047742857253@lid: 47047742857253[0m
+11:32:34.162[36m [Client INFO] Using existing chat name for 47047742857253@lid: 47047742857253[0m
+[2026-04-02 11:32:34] ← 47047742857253: ✅ Anotei seu gasto de R$77 no jantar! 💸
+11:32:40.125[36m [Client INFO] Using existing chat name for 120363176531789889@g.us: PERPENTINO AIRSOFT & AIRGUN[0m
+[2026-04-02 11:32:39] ← 134264989425893: [image: image_20260402_113240.jpg] Chegaram mais 2 Cx de parafusos kk agora vai 🫡
+11:32:42.721[36m [Client INFO] Using existing chat name for 120363420453264195@g.us: WatchTower 02 - Claude Code & Cursor[0m
+[2026-04-02 11:32:41] ← 197555677884473: eita
+Received request to send message desfaz 
+Message sent true Message sent to 47047742857253@lid
+11:32:53.799[36m [Client INFO] Using existing chat name for 120363171716472546@newsletter: 120363171716472546[0m
+[2026-04-02 11:32:44] ← 120363171716472546: [image: image_20260402_113253.jpg] A Polícia Militar de São Paulo mandou para a reserva com salário integral o tenente-coronel Geraldo Leite Rosa Neto, preso sob acusação de feminicídio pela morte da esposa, a PM Gisele Alves Santana. 
+
+Portaria assinada apenas pela diretoria de Pessoal da PM diz que, pela lei, Geraldo Neto tem o direito da aposentadoria pelos critérios proporcionais de idade, com vencimentos integrais. Ou seja, mesmo aposentado, ele continuará recebendo o salário que, no mês de fevereiro de 2026, antes da prisão, foi de quase R$ 29 mil brutos, segundo o site da Transparência do Governo de São Paulo.
+
+Geraldo Neto foi preso em 18 de março, após prisão preventiva ser decretada pela Justiça Militar, acusado de feminicídio e fraude processual. Ele é acusado de forjar a morte da esposa, a PM Gisele Alves Santana, que morreu com um tiro na cabeça no apartamento onde o casal vivia no Brás, no Centro de São Paulo.
+
+➡️ Assista à #GloboNews: http://glo.bo/2Mxn1fC
+11:33:03.300[36m [Client INFO] Using existing chat name for 47047742857253@lid: 47047742857253[0m
+[2026-04-02 11:33:03] ← 47047742857253: Não encontrei nenhuma ação recente que eu possa desfazer agora, mas anotei que você gastou R$25 no almoço do trabalho e achou R$20 no chão. 😉
+11:33:09.476[36m [Client INFO] Using existing chat name for 120363176531789889@g.us: PERPENTINO AIRSOFT & AIRGUN[0m
+11:33:12.756[36m [Client INFO] Using existing chat name for 120363176531789889@g.us: PERPENTINO AIRSOFT & AIRGUN[0m
+[2026-04-02 11:33:12] ← 137374596132881: Top
+11:33:35.275[36m [Client INFO] Using existing chat name for 120363313291969858@g.us: Panela Dev 🍺[0m
+11:33:35.302[36m [Client INFO] Using existing chat name for 120363313291969858@g.us: Panela Dev 🍺[0m
+[2026-04-02 11:33:35] ← 33303813947517: isso
+11:33:49.443[36m [Client INFO] Using existing chat name for 120363313291969858@g.us: Panela Dev 🍺[0m
+[2026-04-02 11:33:49] ← 33303813947517: cara, eu fiz o practice exam e achei bem easy
+11:33:57.334[36m [Client INFO] Using existing chat name for 120363313291969858@g.us: Panela Dev 🍺[0m
+[2026-04-02 11:33:57] ← 33303813947517: já to estudando pra a professional

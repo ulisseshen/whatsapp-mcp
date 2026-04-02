@@ -246,7 +246,7 @@ type SendMessageRequest struct {
 }
 
 // Function to send a WhatsApp message
-func sendWhatsAppMessage(client *whatsmeow.Client, recipient string, message string, mediaPath string, quotedID string) (bool, string) {
+func sendWhatsAppMessage(client *whatsmeow.Client, recipient string, message string, mediaPath string, quotedID string, msgStore *MessageStore) (bool, string) {
 	if !client.IsConnected() {
 		return false, "Not connected to WhatsApp"
 	}
@@ -401,12 +401,31 @@ func sendWhatsAppMessage(client *whatsmeow.Client, recipient string, message str
 			}
 		}
 	} else if quotedID != "" {
+		// Look up the quoted message content from the database
+		var quotedContent string
+		var quotedSender string
+		if msgStore != nil {
+			row := msgStore.db.QueryRow(
+				"SELECT content, sender FROM messages WHERE id = ? LIMIT 1", quotedID)
+			row.Scan(&quotedContent, &quotedSender)
+		}
+		// Build participant JID — use sender from DB or fall back to recipient
+		participantStr := recipientJID.String()
+		if quotedSender != "" {
+			participantStr = quotedSender + "@s.whatsapp.net"
+		}
+		contextInfo := &waProto.ContextInfo{
+			StanzaID:    proto.String(quotedID),
+			Participant: proto.String(participantStr),
+		}
+		if quotedContent != "" {
+			contextInfo.QuotedMessage = &waProto.Message{
+				Conversation: proto.String(quotedContent),
+			}
+		}
 		msg.ExtendedTextMessage = &waProto.ExtendedTextMessage{
-			Text: proto.String(message),
-			ContextInfo: &waProto.ContextInfo{
-				StanzaID:    proto.String(quotedID),
-				Participant: proto.String(recipientJID.String()),
-			},
+			Text:        proto.String(message),
+			ContextInfo: contextInfo,
 		}
 	} else {
 		msg.Conversation = proto.String(message)
@@ -757,7 +776,7 @@ func startRESTServer(client *whatsmeow.Client, messageStore *MessageStore, port 
 		fmt.Println("Received request to send message", req.Message, req.MediaPath)
 
 		// Send the message
-		success, message := sendWhatsAppMessage(client, req.Recipient, req.Message, req.MediaPath, req.QuotedID)
+		success, message := sendWhatsAppMessage(client, req.Recipient, req.Message, req.MediaPath, req.QuotedID, messageStore)
 		fmt.Println("Message sent", success, message)
 		// Set response headers
 		w.Header().Set("Content-Type", "application/json")
